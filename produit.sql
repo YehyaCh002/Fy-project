@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2024 at 07:22 PM
+-- Generation Time: May 25, 2024 at 07:57 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.1.25
 
@@ -54,6 +54,28 @@ INSERT INTO `products` (`id`, `image`, `title`, `price`, `description`, `categor
 (9, 'realme-11-pro.jpg', 'Realme 11 Pro', 68000, 'The Realme 11 Pro is a mid-range smartphone featuring a 6.4-inch FHD+ AMOLED display, a powerful Snapdragon 765G processor, and a quad-camera setup with a 64MP main sensor. It supports 5G connectivity, delivering impressive performance and value.', 'realme', 'product description', 'product keywords'),
 (10, 'realme-10.jpg', 'Realme 10', 35000, 'The Realme 10 is a budget-friendly smartphone featuring a 6.5-inch HD+ display, a MediaTek Helio G85 processor, and a dual-camera setup with a 13MP main sensor. It supports 4G connectivity, delivering reliable performance and essential features.', 'realme', 'product description', 'product keywords');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `created_at`) VALUES
+(205, 'Chehida Yehia', 'yahiayahiachehida@gmail.com', '$2y$10$XvIeYY.q9E5np3O/QqfrxONwOyViVdJfidmHulLlT/XiwqBvWYLka', '2024-05-25 17:53:06'),
+(206, 'anes islem', 'anesislem@gmail.com', '$2y$10$slE4VUgHxqnFpj1g2JnttuXGBxPZa8N9Bwm2EvyGO3DXM.lr6iyUS', '2024-05-25 17:53:50');
+
 --
 -- Indexes for dumped tables
 --
@@ -65,6 +87,14 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -73,6 +103,12 @@ ALTER TABLE `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
